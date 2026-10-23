@@ -27,6 +27,9 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;touch-action:none;transit
 #am{right:14px;top:10px;font:900 15px Impact,sans-serif;text-shadow:0 2px 6px #000;letter-spacing:1px}
 #jz{position:fixed;z-index:6;left:24px;bottom:28px;width:124px;height:124px;border-radius:50%;background:#ffffff14;border:2px solid #b8ff4566;touch-action:none}#jk{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border-radius:50%;background:#b8ff45}
 #fr{position:fixed;z-index:6;right:24px;bottom:34px;width:104px;height:104px;border-radius:50%;background:#ff4747cc;color:#fff;font-size:14px;touch-action:none}
+#rot{display:none;position:fixed;inset:0;z-index:30;background:#05080a;align-items:center;justify-content:center;text-align:center;font:900 22px Impact,sans-serif;letter-spacing:2px;padding:20px}
+@media(orientation:portrait){body.t:not([data-m=menu]) #rot{display:flex}}
+@media(pointer:coarse){#rdt{font-size:13px}#am{font-size:13px}}
 </style></head><body data-m="menu">
 <canvas id="g"></canvas>
 <div class="p menu" id="title">STRIKE<b>POINT</b></div>
@@ -37,6 +40,7 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;touch-action:none;transit
 <div class="p hud" id="rdt"></div><div class="p hud" id="am"></div><div class="p hud" id="hb">CAN <b id="hpn">100</b><div id="hbar"><div id="hp"></div></div></div>
 <div id="jz"><div id="jk"></div></div><button id="fr">ATEŞ</button>
 <div id="pm"><div><h3 style="margin:0 0 8px">PROFİL</h3><div id="avs"></div><input id="ni" maxlength="14"><button id="ok">KAYDET</button></div></div>
+<div id="rot">TELEFONU YANA ÇEVİR ↻</div>
 <div id="ov"><div id="ovc"></div></div>
 <script>
 (()=>{
@@ -86,8 +90,8 @@ function ov(h,c){$('ov').style.display=h?'flex':'none';$('ov').className=c?'cl':
 function nextRd(){rd++;world(false);setMode('buy');ov(`<p style="margin:0">RAUND ${rd}/5 · ${map.n}</p><h2>SİLAHINI SEÇ</h2><div class="gs">${wp.map((w,i)=>`<button class="gc" data-g="${i}"><b>${w.n}</b><span>${w.t}</span><i>HASAR ${w.d} · ŞARJÖR ${w.m}</i></button>`).join('')}</div>`)}
 function finish(){const win=sc2[0]>sc2[1],r0=rk(),l0=S.lv;if(win){S.rp+=20;gainXp(3)}save();ui();const lg=S.lv-l0,up=rk()>r0;
  ov(`<h2 style="color:${win?'#6cb8ff':'#ff6e61'}">${win?'MAVİ':'KIRMIZI'} TAKIM KAZANDI</h2><p style="font-size:22px">MAVİ ${sc2[0]} - ${sc2[1]} KIRMIZI</p><p>${win?'+20 RP':'RP değişmedi'} · ${lg?'+'+lg+' SEVİYE':'seviye aynı'} · ${mk} kill${up?'<br>YENİ RANK: '+RK[rk()][0]:''}</p><button class="gb" id="bk">MENÜYE DÖN</button>`,1)}
-$('ov').onclick=e=>{const b=e.target.closest('[data-g]');if(b){gun=+b.dataset.g;pl.gi=gun;am={m:wp[gun].m,rs:wp[gun].rs};ov(0);setMode('play')}if(e.target.closest('#bk')){ov(0);world(true);setMode('menu');ui();hi()}};
-$('play').onclick=()=>{rd=0;sc2=[0,0];mk=0;if(touch&&document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{});nextRd()};
+$('ov').onclick=e=>{const b=e.target.closest('[data-g]');if(b){gun=+b.dataset.g;pl.gi=gun;am={m:wp[gun].m,rs:wp[gun].rs};ov(0);setMode('play')}if(e.target.closest('#bk')){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});try{screen.orientation.unlock()}catch(e){}ov(0);world(true);setMode('menu');ui();hi()}};
+$('play').onclick=()=>{rd=0;sc2=[0,0];mk=0;if(touch){const d=document.documentElement;Promise.resolve(d.requestFullscreen&&d.requestFullscreen()).catch(()=>{}).then(()=>{try{screen.orientation.lock('landscape').catch(()=>{})}catch(e){}})}nextRd()};
 function upd(dt,now){
  if(dend)return;const F0={d:12,i:650,sp:.1,mv:1},Fe=demo?{d:10,i:900,sp:.15,mv:.9}:{d:6+dif*9+rd*.6,i:1100-dif*500,sp:.21-.1*dif,mv:.7+dif*.5};
  if(demo)ai(pl,en,now,dt,F0);
