@@ -4,13 +4,13 @@
 body{margin:0;background:#05080a;color:#f2f5f7;font:600 13px Inter,system-ui,sans-serif;overflow:hidden}
 canvas{position:fixed;inset:0;width:100vw;height:100vh;touch-action:none;transition:filter .4s}canvas.bl{filter:blur(4px) brightness(.8)}
 .p{position:fixed;z-index:5}button{font:inherit;border:0;cursor:pointer;font-weight:900;letter-spacing:1px}
-.menu,.hud,#jz,#fr{display:none}body[data-m=menu] .menu{display:block}body[data-m=play] .hud{display:block}body.t[data-m=play] #jz,body.t[data-m=play] #fr{display:block}
-#prof{top:12px;left:12px;display:flex!important;gap:9px;align-items:center;background:#0b1217cc;padding:6px 12px 6px 6px;border:1px solid #2d3942;cursor:pointer;min-width:190px}
+.menu,.hud,#jz,#fr{display:none}body[data-m=menu] .menu{display:block}body[data-m=menu] #prof,body[data-m=menu] #rt{display:flex}body[data-m=play] .hud{display:block}body.t[data-m=play] #jz,body.t[data-m=play] #fr{display:block}
+#prof{top:12px;left:12px;gap:9px;align-items:center;background:#0b1217cc;padding:6px 12px 6px 6px;border:1px solid #2d3942;cursor:pointer;min-width:190px}
 #pi{width:48px;height:48px;border:2px solid #b8ff45}#pn{font-weight:900;font-size:15px}#lv{font-size:10px;color:#b8ff45;margin-top:2px}#lbf{height:4px;background:#2d3942;margin-top:4px}#lbf i{display:block;height:100%;background:#b8ff45}
 #play{top:60%;left:50%;transform:translate(-50%,-50%);background:#b8ff45;color:#10150b;font:900 34px Impact,sans-serif;padding:16px 80px;letter-spacing:4px;box-shadow:0 0 40px #b8ff4566;clip-path:polygon(0 0,100% 0,100% 78%,94% 100%,0 100%)}
 #title{top:20%;left:0;right:0;text-align:center;font:900 clamp(40px,8vw,90px) Impact,sans-serif;letter-spacing:4px;text-shadow:0 4px 20px #000}#title b{color:#b8ff45}
 #cr{left:12px;bottom:10px;font-size:10px;color:#9baab4}
-#rt{right:12px;bottom:12px;width:min(330px,calc(100vw - 24px));display:flex!important;flex-direction:column;gap:8px}
+#rt{right:12px;bottom:12px;width:min(330px,calc(100vw - 24px));flex-direction:column;gap:8px}
 .bx{background:#0b1217d9;border:1px solid #2d3942;padding:10px 12px}
 #rkb{display:flex;gap:12px;align-items:center}#rn{font:900 22px Impact,sans-serif;letter-spacing:2px}#rpv{font-size:11px;color:#b4c0c8}
 #on{font-size:10px;color:#b8ff45;float:right}.bx h4{margin:0 0 6px;font-size:11px;letter-spacing:2px;color:#9baab4}
@@ -22,9 +22,9 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;touch-action:none;transit
 #ov{position:fixed;inset:0;z-index:8;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#050a0d99;padding:16px}#ov.cl{background:transparent;text-shadow:0 2px 14px #000,0 0 4px #000}
 #ov h2{font:900 clamp(30px,6vw,60px) Impact,sans-serif;letter-spacing:3px;margin:6px 0}#ov p{font-size:16px;margin:6px 0 16px}
 .gs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:760px}.gc{width:140px;padding:12px 8px;background:#172127;color:#fff;border:1px solid #3a4852}.gc:hover{border-color:#b8ff45}.gc b{display:block;font-size:14px;color:#b8ff45}.gc span{display:block;font-size:11px;margin:4px 0;color:#c4ced4}.gc i{font-size:9px;color:#8998a1;font-style:normal}
-.hud{pointer-events:none}#rdt{top:10px;left:0;right:0;text-align:center;font:900 16px Impact,sans-serif;letter-spacing:2px;text-shadow:0 2px 6px #000}
+.hud{pointer-events:none}body:not([data-m=play]) #xb{display:none}#rdt{top:10px;left:0;right:0;text-align:center;font:900 16px Impact,sans-serif;letter-spacing:2px;text-shadow:0 2px 6px #000}
 #hb{left:14px;top:10px;width:min(200px,40vw)}#hbar{height:8px;background:#2d3942;margin-top:4px}#hp{height:100%;background:#b8ff45;width:100%}
-#am{right:14px;top:10px;font:900 15px Impact,sans-serif;text-shadow:0 2px 6px #000;letter-spacing:1px}
+#xb{position:fixed;z-index:7;right:14px;bottom:14px;background:#0b1217cc;color:#fff;border:1px solid #3a4852;padding:8px 12px;font-size:11px;pointer-events:auto}#am{right:14px;top:10px;font:900 15px Impact,sans-serif;text-shadow:0 2px 6px #000;letter-spacing:1px}
 #jz{position:fixed;z-index:6;left:24px;bottom:28px;width:124px;height:124px;border-radius:50%;background:#ffffff14;border:2px solid #b8ff4566;touch-action:none}#jk{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border-radius:50%;background:#b8ff45}
 #fr{position:fixed;z-index:6;right:24px;bottom:34px;width:104px;height:104px;border-radius:50%;background:#ff4747cc;color:#fff;font-size:14px;touch-action:none}
 #rot{display:none;position:fixed;inset:0;z-index:30;background:#05080a;align-items:center;justify-content:center;text-align:center;font:900 22px Impact,sans-serif;letter-spacing:2px;padding:20px}
@@ -38,6 +38,7 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;touch-action:none;transit
 <div class="p menu" id="cr">Üretici: Kerem M.</div>
 <div class="p menu" id="rt"><div class="bx" id="rkb"><div id="rl"></div><div><div id="rn"></div><div id="rpv"></div></div></div><div class="bx"><h4>SIRALAMA <span id="on"></span></h4><div id="lbl"></div></div></div>
 <div class="p hud" id="rdt"></div><div class="p hud" id="am"></div><div class="p hud" id="hb">CAN <b id="hpn">100</b><div id="hbar"><div id="hp"></div></div></div>
+<button id="xb">MENÜYE ÇIK</button>
 <div id="jz"><div id="jk"></div></div><button id="fr">ATEŞ</button>
 <div id="pm"><div><h3 style="margin:0 0 8px">PROFİL</h3><div id="avs"></div><input id="ni" maxlength="14"><button id="ok">KAYDET</button></div></div>
 <div id="rot">TELEFONU YANA ÇEVİR ↻</div>
@@ -84,13 +85,15 @@ function ai(b,foes,now,dt,F){const t=foes.filter(e=>e.alive).sort((a,c)=>dist(b,
 function dmg(e,d,by){if(!e.alive)return;e.hp-=d;pa.push({x:e.x,y:e.y,life:.25});if(e===pl&&!demo)hurt=.4;
  if(e.hp<=0){e.hp=0;e.alive=0;bl.push({x:e.x,y:e.y,r:rnd(10,16)});if(bl.length>30)bl.shift();if(by===pl&&!demo&&e.team=='r'){mk++;S.tk++;send({t:'k'});gainXp(1);ui();lbr()}
   if(en.every(x=>!x.alive))endR('b');else if([pl,...al].every(x=>!x.alive))endR('r')}}
-function endR(w){if(mode=='play'){sc2[w=='b'?0:1]++;setMode('end');ov(`<h2 style="color:${w=='b'?'#b8ff45':'#ff6e61'}">${w=='b'?'RAUND KAZANILDI':'RAUND KAYBEDİLDİ'}</h2><p>MAVİ ${sc2[0]} - ${sc2[1]} KIRMIZI</p>`,1);setTimeout(()=>rd>=5?finish():nextRd(),2300)}
+function endR(w){if(mode=='play'){sc2[w=='b'?0:1]++;setMode('end');ov(`<h2 style="color:${w=='b'?'#b8ff45':'#ff6e61'}">${w=='b'?'RAUND KAZANILDI':'RAUND KAYBEDİLDİ'}</h2><p>MAVİ ${sc2[0]} - ${sc2[1]} KIRMIZI</p>`,1);setTimeout(()=>mode=='end'&&(rd>=5?finish():nextRd()),2300)}
  else if(mode=='menu'&&!dend){dend=1;setTimeout(()=>{world(true);dend=0},1800)}}
 function ov(h,c){$('ov').style.display=h?'flex':'none';$('ov').className=c?'cl':'';if(h)$('ovc').innerHTML=h}
 function nextRd(){rd++;world(false);setMode('buy');ov(`<p style="margin:0">RAUND ${rd}/5 · ${map.n}</p><h2>SİLAHINI SEÇ</h2><div class="gs">${wp.map((w,i)=>`<button class="gc" data-g="${i}"><b>${w.n}</b><span>${w.t}</span><i>HASAR ${w.d} · ŞARJÖR ${w.m}</i></button>`).join('')}</div>`)}
 function finish(){const win=sc2[0]>sc2[1],r0=rk(),l0=S.lv;if(win){S.rp+=20;gainXp(3)}save();ui();const lg=S.lv-l0,up=rk()>r0;
  ov(`<h2 style="color:${win?'#6cb8ff':'#ff6e61'}">${win?'MAVİ':'KIRMIZI'} TAKIM KAZANDI</h2><p style="font-size:22px">MAVİ ${sc2[0]} - ${sc2[1]} KIRMIZI</p><p>${win?'+20 RP':'RP değişmedi'} · ${lg?'+'+lg+' SEVİYE':'seviye aynı'} · ${mk} kill${up?'<br>YENİ RANK: '+RK[rk()][0]:''}</p><button class="gb" id="bk">MENÜYE DÖN</button>`,1)}
-$('ov').onclick=e=>{const b=e.target.closest('[data-g]');if(b){gun=+b.dataset.g;pl.gi=gun;am={m:wp[gun].m,rs:wp[gun].rs};ov(0);setMode('play')}if(e.target.closest('#bk')){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});try{screen.orientation.unlock()}catch(e){}ov(0);world(true);setMode('menu');ui();hi()}};
+$('ov').onclick=e=>{const b=e.target.closest('[data-g]');if(b){gun=+b.dataset.g;pl.gi=gun;am={m:wp[gun].m,rs:wp[gun].rs};ov(0);setMode('play')}if(e.target.closest('#bk'))toMenu()};
+function toMenu(){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});try{screen.orientation.unlock()}catch(e){}ov(0);sh=0;world(true);setMode('menu');ui();hi()}
+$('xb').onclick=toMenu;
 $('play').onclick=()=>{rd=0;sc2=[0,0];mk=0;if(touch){const d=document.documentElement;Promise.resolve(d.requestFullscreen&&d.requestFullscreen()).catch(()=>{}).then(()=>{try{screen.orientation.lock('landscape').catch(()=>{})}catch(e){}})}nextRd()};
 function upd(dt,now){
  if(dend)return;const F0={d:12,i:650,sp:.1,mv:1},Fe=demo?{d:10,i:900,sp:.15,mv:.9}:{d:6+dif*9+rd*.6,i:1100-dif*500,sp:.21-.1*dif,mv:.7+dif*.5};
